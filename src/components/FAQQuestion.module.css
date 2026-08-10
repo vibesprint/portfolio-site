@@ -1,0 +1,5 @@
+@reference '../index.css';
+
+.faq {
+  @apply flex flex-col gap-[24px];
+}

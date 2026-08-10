@@ -1,0 +1,23 @@
+@reference '../index.css';
+
+.projlist {
+  @apply flex flex-col gap-[48px];
+}
+
+.projlist__texts {
+  @apply flex flex-col gap-[16px];
+}
+
+.projlist__heading-with-badge {
+  @apply flex gap-[12px];
+}
+
+.projlist__heading {
+}
+
+.projlist__desc {
+}
+
+.projlist__cards {
+  @apply grid gap-[32px] grid-cols-2;
+}

@@ -1,0 +1,43 @@
+@reference "../index.css";
+
+.container {
+  @apply w-[min(100%,1200px)] flex flex-col gap-[192px];
+}
+
+.hero-section {
+  @apply flex flex-col gap-[12px];
+}
+
+.hero-section__title {
+  @apply max-w-[min(100%,35em)];
+}
+
+.hero-section__body {
+  @apply max-w-[min(100%,35em)];
+}
+
+.works {
+  @apply flex flex-col gap-[128px];
+}
+
+.works__heading {
+}
+
+.works__projects-lists {
+  @apply flex flex-col gap-[96px];
+}
+
+.faq {
+  @apply flex flex-col gap-[48px];
+}
+
+.faq__heading {
+}
+
+.faq__questions {
+  @apply flex flex-col gap-[48px];
+}
+
+.footer {
+  @apply flex justify-between items-baseline;
+}

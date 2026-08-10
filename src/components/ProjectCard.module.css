@@ -1,0 +1,29 @@
+@reference '../index.css';
+
+.card {
+  @apply px-[24px] py-[16px] flex flex-col gap-[32px];
+}
+
+.card__image {
+  @apply max-w-[512px] w-full h-[288px] min-w-0 object-cover object-center;
+}
+
+.card__texts {
+  @apply flex flex-col gap-[24px];
+}
+
+.card__heading {
+}
+
+.card__links {
+  @apply flex justify-between;
+}
+
+.card__live-site-link {
+}
+
+.card__src-site-link {
+}
+
+.card__desc {
+}

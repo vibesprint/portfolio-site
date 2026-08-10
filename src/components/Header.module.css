@@ -1,0 +1,16 @@
+@reference '../index.css';
+
+.header {
+  @apply flex w-full justify-between align-baseline;
+}
+
+.right-section {
+  @apply flex gap-[4px];
+}
+
+.right-section__indicator {
+  @apply flex gap-[4px] items-center;
+}
+
+.right-section__indicator-text {
+}

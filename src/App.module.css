@@ -1,0 +1,5 @@
+@reference './index.css';
+
+.body {
+  @apply p-[48px] flex justify-center;
+}
