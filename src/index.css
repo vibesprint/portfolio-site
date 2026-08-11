@@ -28,6 +28,8 @@
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   font-size: 24px;
+
+  @apply tracking-wide;
 }
 
 @utility font-utils-preset-1 {
@@ -121,14 +123,4 @@
   --color-grey-800: #2c3634; /* body text */
   --color-grey-900: #1b2321; /* headings */
   --color-grey-950: #121917; /* dark mode bg */
-}
-
-@keyframes blink {
-  from {
-    opacity: 0%;
-  }
-
-  to {
-    opacity: 100%;
-  }
 }

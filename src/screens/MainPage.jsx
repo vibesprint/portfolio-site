@@ -4,14 +4,21 @@ import { getHeroData } from "../lib/hero-section";
 import { makeAllWorksListsForId } from "../fragments/works-lists";
 import { getFAQData } from "../lib/faq";
 import { FAQQuestion } from "../components/FAQQuestion";
+import { CardDialog } from "../components/CardDialog.jsx";
+import { getContactsList } from "../lib/contacts.js";
+import { useRef } from "react";
 
 export function MainPage() {
+  const contactsDialog = useRef(null);
+
   const showContacts = () => {
     console.log("time to show contacts");
+    contactsDialog.current?.showModal();
   };
 
   return (
     <div className={styles.container}>
+      {makeContactsDialog(contactsDialog)}
       <Header showContacts={showContacts} />
       <HeroSection />
       <RecentWorks />
@@ -85,4 +92,18 @@ function Footer() {
       </a>
     </div>
   );
+}
+
+function makeContactsDialog(ref) {
+  const { data } = getContactsList();
+
+  const content = (
+    <ul className={styles["contact-card"]}>
+      {data.map((contact) => {
+        return <li key={contact}>{contact}</li>;
+      })}
+    </ul>
+  );
+
+  return <CardDialog ref={ref} content={content} title="Contacts" />;
 }

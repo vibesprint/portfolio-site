@@ -1,0 +1,21 @@
+@reference '../index.css';
+
+.dialog {
+  @apply fixed inset-0 max-w-none max-h-none w-full h-full open:grid place-items-center bg-black/50;
+}
+
+.dialog__container {
+  @apply flex flex-col bg-white gap-[12px] p-[32px] min-w-[min(100%,300px)] w-[512px];
+}
+
+.dialog__header {
+  @apply flex justify-between items-center;
+}
+
+.dialog__title {
+  @apply font-heading-primary text-teal-700;
+}
+
+.dialog__close-btn {
+  @apply hover:cursor-pointer font-utils-preset-1 text-grey-800;
+}

@@ -9,11 +9,11 @@
 }
 
 .hero-section__title {
-  @apply max-w-[min(100%,35em)] font-heading-primary text-teal-700;
+  @apply max-w-[35em] font-heading-primary text-teal-700;
 }
 
 .hero-section__body {
-  @apply max-w-[min(100%,35em)] font-body-primary text-grey-950;
+  @apply max-w-[35em] font-body-primary text-grey-950;
 }
 
 .works {
@@ -42,4 +42,8 @@
 
 .footer {
   @apply flex justify-between items-baseline font-utils-preset-2 text-grey-500;
+}
+
+.contact-card {
+  @apply flex flex-col gap-[16px] font-body-primary text-grey-700 tracking-wider;
 }
