@@ -5,9 +5,9 @@
 }
 
 .faq__question {
-  @apply font-heading-quaternary;
+  @apply font-heading-quaternary text-grey-950;
 }
 
 .faq__answer {
-  @apply font-body-primary;
+  @apply font-body-primary text-grey-800;
 }

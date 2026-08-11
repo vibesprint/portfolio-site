@@ -5,16 +5,31 @@
 }
 
 .header__logo {
-  @apply font-heading-quaternary;
+  @apply font-heading-quaternary text-teal-700;
 }
 
 .right-section {
-  @apply flex gap-[4px] font-utils-preset-2;
+  @apply flex gap-[16px] font-utils-preset-2 text-green-900;
 }
 
 .right-section__indicator {
-  @apply flex gap-[4px] items-center;
+  @apply flex gap-[4px] items-center bg-green-100 px-[8px];
+}
+
+.right-section__indicator-dot {
+  @apply animate-[blink_1s_steps(1)_0s_infinite];
 }
 
 .right-section__indicator-text {
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
 }

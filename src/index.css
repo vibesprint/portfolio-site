@@ -47,3 +47,88 @@
   font-weight: 400;
   font-size: 14px;
 }
+
+@theme {
+  /* ── Primary 1 · Teal ─────────────────────────── */
+  --color-teal-50: #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e; /* ★ brand base */
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+
+  /* ── Primary 2 · Burnt Orange ─────────────────── */
+  --color-orange-50: #fdf1ec;
+  --color-orange-100: #fadfd3;
+  --color-orange-200: #f5bfa8;
+  --color-orange-300: #f0a07e;
+  --color-orange-400: #eb8767;
+  --color-orange-500: #e76f51; /* ★ CTA base */
+  --color-orange-600: #cf5634;
+  --color-orange-700: #a84327;
+  --color-orange-800: #80331d;
+  --color-orange-900: #572213;
+
+  /* ── Accent · Neutral/Success · Leaf Green ────── */
+  --color-green-50: #f2f9eb;
+  --color-green-100: #dff0ce;
+  --color-green-200: #c2e39f;
+  --color-green-300: #a3d470;
+  --color-green-400: #82c24a;
+  --color-green-500: #64ac2e; /* ★ */
+  --color-green-600: #4f8f24;
+  --color-green-700: #3d701c;
+  --color-green-800: #2c5214;
+  --color-green-900: #1d370d;
+
+  /* ── Accent · Warning · Honey Gold ────────────── */
+  --color-gold-50: #fcf6e6;
+  --color-gold-100: #f9e8be;
+  --color-gold-200: #f4d68a;
+  --color-gold-300: #efc355;
+  --color-gold-400: #e9b02b;
+  --color-gold-500: #e3a008; /* ★ */
+  --color-gold-600: #bc8306;
+  --color-gold-700: #926504;
+  --color-gold-800: #6a4903;
+  --color-gold-900: #452f02;
+
+  /* ── Accent · Error · Raspberry ───────────────── */
+  --color-raspberry-50: #fbeaf1;
+  --color-raspberry-100: #f6c9db;
+  --color-raspberry-200: #ef9dbe;
+  --color-raspberry-300: #e7719f;
+  --color-raspberry-400: #d63e77;
+  --color-raspberry-500: #c2255c; /* ★ */
+  --color-raspberry-600: #a11c4c;
+  --color-raspberry-700: #7e153b;
+  --color-raspberry-800: #5c0f2b;
+  --color-raspberry-900: #3b091b;
+
+  /* ── Grey · teal-tinted ───────────────────────── */
+  --color-grey-50: #f7faf9;
+  --color-grey-100: #eef2f1;
+  --color-grey-200: #dde4e2;
+  --color-grey-300: #c4cecc;
+  --color-grey-400: #9aa7a4;
+  --color-grey-500: #71807d;
+  --color-grey-600: #55635f;
+  --color-grey-700: #414d4a;
+  --color-grey-800: #2c3634; /* body text */
+  --color-grey-900: #1b2321; /* headings */
+  --color-grey-950: #121917; /* dark mode bg */
+}
+
+@keyframes blink {
+  from {
+    opacity: 0%;
+  }
+
+  to {
+    opacity: 100%;
+  }
+}

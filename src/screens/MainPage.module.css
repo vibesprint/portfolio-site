@@ -9,11 +9,11 @@
 }
 
 .hero-section__title {
-  @apply max-w-[min(100%,35em)] font-heading-primary;
+  @apply max-w-[min(100%,35em)] font-heading-primary text-teal-700;
 }
 
 .hero-section__body {
-  @apply max-w-[min(100%,35em)] font-body-primary;
+  @apply max-w-[min(100%,35em)] font-body-primary text-grey-950;
 }
 
 .works {
@@ -21,7 +21,7 @@
 }
 
 .works__heading {
-  @apply font-heading-primary;
+  @apply font-heading-primary text-teal-700;
 }
 
 .works__projects-lists {
@@ -33,7 +33,7 @@
 }
 
 .faq__heading {
-  @apply font-heading-secondary;
+  @apply font-heading-secondary text-teal-700;
 }
 
 .faq__questions {
@@ -41,5 +41,5 @@
 }
 
 .footer {
-  @apply flex justify-between items-baseline font-utils-preset-2;
+  @apply flex justify-between items-baseline font-utils-preset-2 text-grey-500;
 }

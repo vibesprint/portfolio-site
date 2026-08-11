@@ -1,7 +1,7 @@
 @reference '../index.css';
 
 .card {
-  @apply px-[24px] py-[16px] flex flex-col gap-[32px];
+  @apply px-[24px] py-[16px] flex flex-col gap-[32px] text-grey-950;
 }
 
 .card__image {

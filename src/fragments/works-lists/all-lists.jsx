@@ -37,7 +37,7 @@ function makeProjectList(index, proj_data) {
 
   if (cards_data.hasMore) {
     return (
-      <div key={index} className="flex flex-col gap-[64px]">
+      <div key={index} className="flex flex-col gap-[64px] items-center">
         {projlist}
         <Button action={loadMoreHandler}>Load more</Button>
       </div>
