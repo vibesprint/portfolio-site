@@ -13,10 +13,11 @@
 }
 
 .card__heading {
+  @apply font-heading-tertiary;
 }
 
 .card__links {
-  @apply flex justify-between;
+  @apply flex justify-between font-utils-preset-1;
 }
 
 .card__live-site-link {
@@ -26,4 +27,5 @@
 }
 
 .card__desc {
+  @apply font-body-primary;
 }

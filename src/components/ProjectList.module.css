@@ -9,13 +9,20 @@
 }
 
 .projlist__heading-with-badge {
-  @apply flex gap-[12px];
+  @apply flex gap-[12px] items-baseline;
 }
 
 .projlist__heading {
+  @apply font-heading-secondary underline decoration-2 decoration-solid;
+  text-decoration-skip-ink: auto;
 }
 
 .projlist__desc {
+  @apply font-body-primary;
+}
+
+.projlist__badge {
+  @apply p-[4px] font-utils-preset-3;
 }
 
 .projlist__cards {

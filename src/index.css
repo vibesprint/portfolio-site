@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@utility font-heading-primary {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+}
+
+@utility font-heading-secondary {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+}
+
+@utility font-heading-tertiary {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+@utility font-heading-quaternary {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+@utility font-body-primary {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+@utility font-utils-preset-1 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+@utility font-utils-preset-2 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+@utility font-utils-preset-3 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}

@@ -3,3 +3,11 @@
 .faq {
   @apply flex flex-col gap-[24px];
 }
+
+.faq__question {
+  @apply font-heading-quaternary;
+}
+
+.faq__answer {
+  @apply font-body-primary;
+}

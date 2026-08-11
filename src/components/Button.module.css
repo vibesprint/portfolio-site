@@ -1,5 +1,5 @@
 @reference '../index.css';
 
 .button {
-  @apply px-[8px] py-[12px];
+  @apply px-[8px] py-[12px] font-utils-preset-2;
 }

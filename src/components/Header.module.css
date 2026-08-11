@@ -1,11 +1,15 @@
 @reference '../index.css';
 
 .header {
-  @apply flex w-full justify-between align-baseline;
+  @apply flex w-full justify-between items-center;
+}
+
+.header__logo {
+  @apply font-heading-quaternary;
 }
 
 .right-section {
-  @apply flex gap-[4px];
+  @apply flex gap-[4px] font-utils-preset-2;
 }
 
 .right-section__indicator {
