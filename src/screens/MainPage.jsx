@@ -1,12 +1,14 @@
 import styles from "./MainPage.module.css";
 import { Header } from "../components/Header";
 import { useHeroData } from "../lib/hero-section";
-import { makeAllWorksListsForId } from "../fragments/works-lists";
+import { WorksListsForId } from "../fragments/works-lists";
 import { getFAQData } from "../lib/faq";
 import { FAQQuestion } from "../components/FAQQuestion";
 import { CardDialog } from "../components/CardDialog.jsx";
-import { getContactsList } from "../lib/contacts.js";
-import { useRef } from "react";
+import { useContactsList } from "../lib/contacts.js";
+import { useRef, forwardRef } from "react";
+import { DotsIndicator } from "../components/DotsIndicator.jsx";
+import { ErrorText, NeutralText } from "../components/TextMessageUtils.jsx";
 
 export function MainPage() {
   const contactsDialog = useRef(null);
@@ -18,7 +20,7 @@ export function MainPage() {
 
   return (
     <div className={styles.container}>
-      {makeContactsDialog(contactsDialog)}
+      <ContactsDialog ref={contactsDialog} />
       <Header showContacts={showContacts} />
       <HeroSection />
       <RecentWorks />
@@ -32,11 +34,16 @@ export function MainPage() {
 function HeroSection() {
   const { data, isPending, isError } = useHeroData();
 
-  if (isError) return <h1>Error loading hero content</h1>;
+  if (isError) return <ErrorText text="Error loading hero content" />;
 
-  if (isPending) return <h1>Loading ...</h1>;
+  if (isPending) return <DotsIndicator text="Loading hero section" />;
 
   const { title, body } = data.data;
+
+  if (title == null || body == null)
+    return (
+      <NeutralText text="No hero section content found! This should not happen please report to administrator" />
+    );
 
   return (
     <div className={styles["hero-section"]}>
@@ -47,7 +54,25 @@ function HeroSection() {
 }
 
 function RecentWorks() {
-  const lists = makeAllWorksListsForId("recent_works");
+  const loading_state = <DotsIndicator text="Loading the recent works" />;
+  const empty_state = (
+    <h1 className="font-body-primary text-grey-500">
+      No entries found for recent works!
+    </h1>
+  );
+  const err_state = (
+    <h1 className="font-body-primary text-raspberry-800">
+      Error: unable to load entries for recent works
+    </h1>
+  );
+  const lists = (
+    <WorksListsForId
+      workslists_id="recent_works"
+      loading_state={loading_state}
+      empty_state={empty_state}
+      err_state={err_state}
+    />
+  );
 
   return (
     <div className={styles["works"]}>
@@ -58,7 +83,22 @@ function RecentWorks() {
 }
 
 function DistantWorks() {
-  const lists = makeAllWorksListsForId("distant_works");
+  const loading_state = <DotsIndicator text="Loading the distant works" />;
+  const empty_state = (
+    <NeutralText text="No entries found for distant works!" />
+  );
+  const err_state = (
+    <ErrorText text="Error: unable to load entries for distant works" />
+  );
+
+  const lists = (
+    <WorksListsForId
+      workslists_id="distant_works"
+      loading_state={loading_state}
+      empty_state={empty_state}
+      err_state={err_state}
+    />
+  );
 
   return (
     <div className={styles["works"]}>
@@ -98,16 +138,25 @@ function Footer() {
   );
 }
 
-function makeContactsDialog(ref) {
-  const { data } = getContactsList();
+const ContactsDialog = forwardRef((_props, ref) => {
+  const { data, isPending, isError } = useContactsList();
 
-  const content = (
-    <ul className={styles["contact-card"]}>
-      {data.map((contact) => {
-        return <li key={contact}>{contact}</li>;
-      })}
-    </ul>
-  );
+  let content;
+  if (isPending) {
+    content = <DotsIndicator text="Loading contacts" />;
+  } else if (isError) {
+    content = <ErrorText text="Error: unable to load any contacts entries" />;
+  } else if ((data?.length ?? 0) === 0) {
+    content = <NeutralText text="No contacts entries found" />;
+  } else {
+    content = (
+      <ul className={styles["contact-card"]}>
+        {data.map((contact) => {
+          return <li key={contact}>{contact}</li>;
+        })}
+      </ul>
+    );
+  }
 
   return <CardDialog ref={ref} content={content} title="Contacts" />;
-}
+});

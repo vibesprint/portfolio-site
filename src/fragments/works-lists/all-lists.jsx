@@ -1,43 +1,83 @@
-import { getWorksListsForId } from "../../lib/projects";
+import { useWorksListsForId } from "../../lib/projects";
 import { ProjectCard } from "../../components/ProjectCard";
 import { ProjectList } from "../../components/ProjectList";
-import { getCardsDataFor } from "../../lib/projects";
+import { useCardsDataFor } from "../../lib/projects";
 import { Button } from "../../components/Button";
+import { useState } from "react";
+import { DotsIndicator } from "../../components/DotsIndicator";
+import { ErrorText, NeutralText } from "../../components/TextMessageUtils";
 
-export function makeAllWorksListsForId(workslists_id) {
-  const { data } = getWorksListsForId(workslists_id);
+export function WorksListsForId({
+  workslists_id,
+  loading_state,
+  err_state,
+  empty_state,
+}) {
+  const { data, isPending, isError } = useWorksListsForId(workslists_id);
+
+  if (isPending) {
+    return loading_state;
+  }
+
+  if (isError) {
+    return err_state;
+  }
 
   const results = [];
-  for (const [index, project_list] of data.entries()) {
-    const proj = makeProjectList(index, project_list);
+  for (const [index, project_list] of data?.entries() ?? []) {
+    const proj = <WorksListsForIdLevel2 key={index} proj_data={project_list} />;
 
     results.push(proj);
   }
-  return results;
+
+  if (results.length < 1) return empty_state;
+
+  return <>{results}</>;
 }
 
-function makeProjectList(index, proj_data) {
-  const cards_coll_id = proj_data["cards_collection_id"];
-  const { data: cards_data } = getCardsDataFor(cards_coll_id);
+const COUNT_INC_SIZE = 4;
 
-  const cards = cards_data.cards;
+function WorksListsForIdLevel2({ proj_data }) {
+  const cards_coll_id = proj_data.documentId;
+  const {
+    data: cards_data,
+    isPending,
+    isError,
+  } = useCardsDataFor(cards_coll_id);
+  const [count, setCount] = useState(4);
+
+  const cards = cards_data?.cards;
 
   const card_comps = [];
-  for (const [index, card] of cards.entries()) {
+  for (const [index, card] of cards?.slice(0, count).entries() ?? []) {
     card_comps.push(<ProjectCard key={index} {...card} />);
   }
 
   const loadMoreHandler = () => {
-    console.log("To load more cards");
+    setCount(count + COUNT_INC_SIZE);
   };
 
-  const projlist = (
-    <ProjectList key={index} {...proj_data} cards={card_comps} />
-  );
+  let final_cards_list;
+  if (isPending) {
+    const msg = `Loading projects for '${proj_data.title}`;
+    final_cards_list = [<DotsIndicator text={msg} />];
+  } else if (isError) {
+    final_cards_list = [<ErrorText text="Error: couldn't load projects" />];
+  } else {
+    final_cards_list = card_comps;
+  }
 
-  if (cards_data.hasMore) {
+  if (final_cards_list.length === 0) {
+    const err_msg = `No projects found for '${proj_data.title}'!`;
+    final_cards_list = [<NeutralText text={err_msg} />];
+  }
+
+  const projlist = <ProjectList {...proj_data} cards={final_cards_list} />;
+
+  const hasMore = cards.length > count;
+  if (hasMore) {
     return (
-      <div key={index} className="flex flex-col gap-[64px]">
+      <div className="flex flex-col gap-[64px]">
         {projlist}
         <div className="self-center">
           <Button action={loadMoreHandler}>Load more</Button>

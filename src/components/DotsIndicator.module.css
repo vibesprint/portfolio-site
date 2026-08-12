@@ -1,0 +1,24 @@
+@reference '../index.css';
+
+.indicator {
+  @apply after:animate-[indicate_2s_steps(4)_infinite] font-body-primary text-teal-900;
+}
+
+@keyframes indicate {
+  0%,
+  100% {
+    content: "";
+  }
+
+  25% {
+    content: ".";
+  }
+
+  50% {
+    content: "..";
+  }
+
+  75% {
+    content: "...";
+  }
+}
