@@ -1,6 +1,6 @@
 import styles from "./MainPage.module.css";
 import { Header } from "../components/Header";
-import { getHeroData } from "../lib/hero-section";
+import { useHeroData } from "../lib/hero-section";
 import { makeAllWorksListsForId } from "../fragments/works-lists";
 import { getFAQData } from "../lib/faq";
 import { FAQQuestion } from "../components/FAQQuestion";
@@ -30,9 +30,13 @@ export function MainPage() {
 }
 
 function HeroSection() {
-  const {
-    data: { title, body },
-  } = getHeroData();
+  const { data, isPending, isError } = useHeroData();
+
+  if (isError) return <h1>Error loading hero content</h1>;
+
+  if (isPending) return <h1>Loading ...</h1>;
+
+  const { title, body } = data.data;
 
   return (
     <div className={styles["hero-section"]}>
@@ -72,7 +76,7 @@ function FAQSection() {
       <div className={styles["faq__questions"]}>
         {data.map((faq, index) => {
           if (index === 0)
-            return <FAQQuestion {...faq} key={index} name="faq" open="true" />;
+            return <FAQQuestion {...faq} key={index} name="faq" open={true} />;
           else return <FAQQuestion {...faq} key={index} name="faq" />;
         })}
       </div>
@@ -83,7 +87,7 @@ function FAQSection() {
 function Footer() {
   return (
     <div className={styles["footer"]}>
-      <p className={styles["footer__copyright"]}>c 2026 Mohammad Raza</p>
+      <p className={styles["footer__copyright"]}>&copy; 2026 Mohammad Raza</p>
       <a
         href="https://github.com/vibesprint"
         className={styles["footer__github"]}

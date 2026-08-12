@@ -1,8 +1,12 @@
-export function getHeroData() {
-  const data = {
-    title: "Mohammad Raza",
-    body: "Something something something lorem ipsum".repeat(3),
-  };
+import { useQuery } from "@tanstack/react-query";
+import { client as strapi } from "./strapi/client.js";
+import { QUERY_KEYS } from "./query-keys";
 
-  return { data };
+export function useHeroData() {
+  const { data, isError, isPending, isSuccess, error } = useQuery({
+    queryKey: QUERY_KEYS.hero,
+    queryFn: () => strapi.single("hero-section").find(),
+  });
+
+  return { data, isError, isPending, isSuccess, error };
 }
