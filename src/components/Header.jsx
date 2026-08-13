@@ -17,8 +17,13 @@ export function Header({ showContacts }) {
 
   return (
     <div className={styles.header}>
-      <p className={styles.header__logo}>mohammad.raza</p>
+      <a href="/" className={styles.header__logo}>
+        mohammad.raza
+      </a>
       <div className={styles["right-section"]}>
+        <a href="/exp" className={styles["right-section__experience"]}>
+          <p>experience</p>
+        </a>
         <Button action={showContacts}>contact</Button>
         <div
           className={styles["right-section__indicator"]}

@@ -1,5 +1,5 @@
 @reference '../index.css';
 
 .button {
-  @apply px-[8px] py-[12px] font-utils-preset-2 text-teal-50 bg-teal-700;
+  @apply px-[8px] py-[12px] font-utils-preset-2 text-teal-50 bg-teal-700 hover:cursor-pointer;
 }

@@ -4,4 +4,5 @@ export const QUERY_KEYS = {
   workslistsFor: (id) => ["workslists", id],
   cards_collection_for: (coll_id) => ["cards", coll_id],
   current_status: ["current_status"],
+  experience: ["experience"],
 };

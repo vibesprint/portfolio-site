@@ -10,7 +10,7 @@ import { useRef, forwardRef } from "react";
 import { DotsIndicator } from "../components/DotsIndicator.jsx";
 import { ErrorText, NeutralText } from "../components/TextMessageUtils.jsx";
 
-export function MainPage() {
+export default function MainPage() {
   const contactsDialog = useRef(null);
 
   const showContacts = () => {
@@ -47,8 +47,13 @@ function HeroSection() {
 
   return (
     <div className={styles["hero-section"]}>
-      <h1 className={styles["hero-section__title"]}>{title}</h1>
-      <p className={styles["hero-section__body"]}>{body}</p>
+      <div className={styles["hero-section__texts"]}>
+        <h1 className={styles["hero-section__title"]}>{title}</h1>
+        <p className={styles["hero-section__body"]}>{body}</p>
+      </div>
+      <a href="/exp" className={styles["hero-section__experience"]}>
+        experience.html
+      </a>
     </div>
   );
 }

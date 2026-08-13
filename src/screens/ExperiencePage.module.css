@@ -1,0 +1,17 @@
+@reference '../index.css';
+
+.main {
+  @apply w-[min(100%,1200px)] flex flex-col gap-[128px];
+}
+
+.content {
+  @apply flex flex-col gap-[64px];
+}
+
+.content__heading {
+  @apply font-heading-primary text-teal-700;
+}
+
+.content__body {
+  @apply font-body-primary text-grey-950 max-w-[35em];
+}

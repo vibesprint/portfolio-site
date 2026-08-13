@@ -12,6 +12,12 @@
   @apply flex gap-[16px] font-utils-preset-2 text-green-900;
 }
 
+.right-section__experience {
+  @apply font-utils-preset-1 text-teal-700 hover:underline hover:decoration-orange-500 hover:cursor-pointer;
+  @apply p-[8px] border border-orange-500 items-center;
+  @apply hidden lg:flex;
+}
+
 .right-section__indicator {
   @apply flex gap-[4px] items-center bg-green-100 px-[8px];
 }
