@@ -60,16 +60,18 @@ function WorksListsForIdLevel2({ proj_data }) {
   let final_cards_list;
   if (isPending) {
     const msg = `Loading projects for '${proj_data.title}`;
-    final_cards_list = [<DotsIndicator text={msg} />];
+    final_cards_list = [<DotsIndicator key={0} text={msg} />];
   } else if (isError) {
-    final_cards_list = [<ErrorText text="Error: couldn't load projects" />];
+    final_cards_list = [
+      <ErrorText key={0} text="Error: couldn't load projects" />,
+    ];
   } else {
     final_cards_list = card_comps;
   }
 
   if (final_cards_list.length === 0) {
     const err_msg = `No projects found for '${proj_data.title}'!`;
-    final_cards_list = [<NeutralText text={err_msg} />];
+    final_cards_list = [<NeutralText key={0} text={err_msg} />];
   }
 
   const projlist = <ProjectList {...proj_data} cards={final_cards_list} />;
