@@ -27,4 +27,7 @@
 
 .projlist__cards {
   @apply grid gap-[32px] grid-cols-2;
+  @variant max-sm {
+    @apply flex flex-col gap-[48px];
+  }
 }

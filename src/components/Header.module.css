@@ -2,6 +2,9 @@
 
 .header {
   @apply flex w-full justify-between items-center;
+  @variant max-sm {
+    @apply flex-col gap-[24px] items-center;
+  }
 }
 
 .header__logo {
@@ -10,6 +13,9 @@
 
 .right-section {
   @apply flex gap-[16px] font-utils-preset-2 text-green-900;
+  @variant max-sm {
+    @apply gap-[8px];
+  }
 }
 
 .right-section__experience {

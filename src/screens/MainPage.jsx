@@ -9,6 +9,7 @@ import { useContactsList } from "../lib/contacts.js";
 import { useRef, forwardRef } from "react";
 import { DotsIndicator } from "../components/DotsIndicator.jsx";
 import { ErrorText, NeutralText } from "../components/TextMessageUtils.jsx";
+import { Footer } from "../components/Footer.jsx";
 
 export default function MainPage() {
   const contactsDialog = useRef(null);
@@ -125,20 +126,6 @@ function FAQSection() {
           else return <FAQQuestion {...faq} key={index} name="faq" />;
         })}
       </div>
-    </div>
-  );
-}
-
-function Footer() {
-  return (
-    <div className={styles["footer"]}>
-      <p className={styles["footer__copyright"]}>&copy; 2026 Mohammad Raza</p>
-      <a
-        href="https://github.com/vibesprint"
-        className={styles["footer__github"]}
-      >
-        github
-      </a>
     </div>
   );
 }

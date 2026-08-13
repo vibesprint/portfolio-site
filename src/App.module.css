@@ -1,5 +1,5 @@
 @reference './index.css';
 
 .body {
-  @apply p-[48px] flex justify-center;
+  @apply py-[48px] px-[16px] md:px-[24px] flex justify-center;
 }

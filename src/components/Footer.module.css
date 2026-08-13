@@ -1,0 +1,6 @@
+@reference '../index.css';
+
+.footer {
+  @apply flex justify-between items-baseline font-utils-preset-2 text-grey-500;
+  @apply max-sm:flex-col-reverse max-sm:gap-[16px] max-sm:items-center;
+}

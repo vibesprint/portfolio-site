@@ -49,10 +49,6 @@
   @apply flex flex-col gap-[48px];
 }
 
-.footer {
-  @apply flex justify-between items-baseline font-utils-preset-2 text-grey-500;
-}
-
 .contact-card {
   @apply flex flex-col gap-[16px] font-body-primary text-grey-700 tracking-wider;
 }
