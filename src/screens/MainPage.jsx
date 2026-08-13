@@ -23,10 +23,12 @@ export default function MainPage() {
     <div className={styles.container}>
       <ContactsDialog ref={contactsDialog} />
       <Header showContacts={showContacts} />
-      <HeroSection />
-      <RecentWorks />
-      <DistantWorks />
-      <FAQSection />
+      <main className={styles["container__main"]}>
+        <HeroSection />
+        <RecentWorks />
+        <DistantWorks />
+        <FAQSection />
+      </main>
       <Footer />
     </div>
   );
@@ -47,7 +49,7 @@ function HeroSection() {
     );
 
   return (
-    <div className={styles["hero-section"]}>
+    <article className={styles["hero-section"]}>
       <div className={styles["hero-section__texts"]}>
         <h1 className={styles["hero-section__title"]}>{title}</h1>
         <p className={styles["hero-section__body"]}>{body}</p>
@@ -55,7 +57,7 @@ function HeroSection() {
       <a href="/exp" className={styles["hero-section__experience"]}>
         experience.html
       </a>
-    </div>
+    </article>
   );
 }
 
@@ -81,10 +83,10 @@ function RecentWorks() {
   );
 
   return (
-    <div className={styles["works"]}>
+    <article className={styles["works"]}>
       <h1 className={styles["works__heading"]}>Recent Works</h1>
       <div className={styles["works__projects-lists"]}>{lists}</div>
-    </div>
+    </article>
   );
 }
 
@@ -107,26 +109,35 @@ function DistantWorks() {
   );
 
   return (
-    <div className={styles["works"]}>
+    <article className={styles["works"]}>
       <h1 className={styles["works__heading"]}>Distant Works</h1>
       <div className={styles["works__projects-lists"]}>{lists}</div>
-    </div>
+    </article>
   );
 }
 
 function FAQSection() {
   const { data } = getFAQData();
   return (
-    <div className={styles["faq"]}>
+    <article className={styles["faq"]}>
       <h1 className={styles["faq__heading"]}>FAQs</h1>
-      <div className={styles["faq__questions"]}>
+      <ul className={styles["faq__questions"]}>
         {data.map((faq, index) => {
           if (index === 0)
-            return <FAQQuestion {...faq} key={index} name="faq" open={true} />;
-          else return <FAQQuestion {...faq} key={index} name="faq" />;
+            return (
+              <li key={index}>
+                <FAQQuestion {...faq} name="faq" open={true} />
+              </li>
+            );
+          else
+            return (
+              <li key={index}>
+                <FAQQuestion {...faq} name="faq" />
+              </li>
+            );
         })}
-      </div>
-    </div>
+      </ul>
+    </article>
   );
 }
 

@@ -4,6 +4,10 @@
   @apply w-[min(100%,1200px)] flex flex-col gap-[192px];
 }
 
+.container__main {
+  @apply flex flex-col gap-[192px];
+}
+
 .hero-section {
   @apply flex flex-col gap-[32px];
 }

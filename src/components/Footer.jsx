@@ -2,7 +2,7 @@ import styles from "./Footer.module.css";
 
 export function Footer() {
   return (
-    <div className={styles["footer"]}>
+    <footer className={styles["footer"]}>
       <p className={styles["footer__copyright"]}>&copy; 2026 Mohammad Raza</p>
       <a
         href="https://github.com/vibesprint"
@@ -10,6 +10,6 @@ export function Footer() {
       >
         github
       </a>
-    </div>
+    </footer>
   );
 }

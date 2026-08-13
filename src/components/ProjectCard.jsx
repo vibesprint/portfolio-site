@@ -2,7 +2,7 @@ import styles from "./ProjectCard.module.css";
 
 export function ProjectCard({ title, desc, src_site, live_site, img_url }) {
   return (
-    <div className={styles.card}>
+    <article className={styles.card}>
       <img src={img_url} alt={title} className={styles["card__image"]} />
       <div className={styles["card__texts"]}>
         <h2 className={styles["card__heading"]}>{title}</h2>
@@ -16,6 +16,6 @@ export function ProjectCard({ title, desc, src_site, live_site, img_url }) {
         </div>
         <p className={styles["card__desc"]}>{desc}</p>
       </div>
-    </div>
+    </article>
   );
 }

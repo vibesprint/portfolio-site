@@ -16,9 +16,9 @@ export function Header({ showContacts }) {
   }
 
   return (
-    <div className={styles.header}>
-      <a href="/" className={styles.header__logo}>
-        mohammad.raza
+    <header className={styles.header}>
+      <a href="/" className={styles.header__logo} aria-label="Go to main page">
+        <p aria-hidden="true">mohammad.raza</p>
       </a>
       <div className={styles["right-section"]}>
         <a href="/exp" className={styles["right-section__experience"]}>
@@ -29,7 +29,12 @@ export function Header({ showContacts }) {
           className={styles["right-section__indicator"]}
           style={indicator_bg ? { backgroundColor: indicator_bg } : undefined}
         >
-          <p className={styles["right-section__indicator-dot"]}>*</p>
+          <p
+            className={styles["right-section__indicator-dot"]}
+            aria-hidden="true"
+          >
+            *
+          </p>
 
           <p
             className={styles["right-section__indicator-text"]}
@@ -49,6 +54,6 @@ export function Header({ showContacts }) {
           </p>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
