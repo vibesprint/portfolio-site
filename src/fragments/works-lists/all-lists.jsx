@@ -38,15 +38,8 @@ export function WorksListsForId({
 const COUNT_INC_SIZE = 4;
 
 function WorksListsForIdLevel2({ proj_data }) {
-  const cards_coll_id = proj_data.documentId;
-  const {
-    data: cards_data,
-    isPending,
-    isError,
-  } = useCardsDataFor(cards_coll_id);
+  const { data: cards, isPending, isError } = useCardsDataFor(proj_data);
   const [count, setCount] = useState(4);
-
-  const cards = cards_data?.cards;
 
   const card_comps = [];
   for (const [index, card] of cards?.slice(0, count).entries() ?? []) {

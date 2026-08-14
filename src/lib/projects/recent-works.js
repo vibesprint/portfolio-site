@@ -1,25 +1,21 @@
-import { client as strapi } from "../strapi/client";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../query-keys";
+import { client as sanity } from "../sanity/client";
 
 export function useWorksListsForId(workslists_id) {
-  const fetchData = () =>
-    strapi.collection("meta-work-lists").find({
-      filters: {
-        name: {
-          $eq: workslists_id,
-        },
-      },
-      populate: "*",
-    });
+  const fetcher = () =>
+    sanity.fetch(
+      '*[_type == "meta-works-lists" && name == $worksName]{ project_lists[]->{_id, title, desc } }[0]',
+      { worksName: workslists_id },
+    );
 
   const { data, isSuccess, isPending, isError, error } = useQuery({
     queryKey: QUERY_KEYS.workslistsFor(workslists_id),
-    queryFn: fetchData,
+    queryFn: fetcher,
   });
 
   return {
-    data: data?.data[0]?.project_lists,
+    data: data?.project_lists,
     isPending,
     isError,
     isSuccess,
@@ -27,48 +23,27 @@ export function useWorksListsForId(workslists_id) {
   };
 }
 
-export function useCardsDataFor(coll_id) {
-  const fetcher = () =>
-    strapi.collection("project-lists").find({
-      filters: {
-        documentId: {
-          $eq: coll_id,
-        },
-      },
-      populate: {
-        cards_collection: {
-          populate: {
-            cards: {
-              populate: {
-                img_url: {
-                  fields: ["url"],
-                },
-              },
-            },
-          },
-        },
-      },
-    });
+export function useCardsDataFor(proj_data) {
+  const coll_id = proj_data._id;
+  const query =
+    '*[_type == "project-list" && _id == $projid]{ cards_collection[]->{ title, desc, src_site, live_site, img_url } }[0].cards_collection[]{ ..., img_url { asset-> { url } } }';
+
+  const fetcher = () => sanity.fetch(query, { projid: coll_id });
 
   const { data, isPending, isError, isSuccess, error } = useQuery({
     queryKey: QUERY_KEYS.cards_collection_for(coll_id),
     queryFn: fetcher,
   });
 
-  const result_cards = [];
-  for (let cdata of data?.data[0]?.cards_collection?.cards ?? []) {
-    const new_url = new URL(cdata?.img_url?.url, strapi.baseURL).href;
-    result_cards.push({
-      ...cdata,
-      img_url: new_url,
-    });
+  const cards = [];
+  for (let card of data ?? []) {
+    const c = {
+      ...card,
+      img_url: card.img_url.asset.url,
+    };
+
+    cards.push(c);
   }
 
-  const result = {
-    cards: result_cards,
-    hasMore: false,
-    count: result_cards.length,
-  };
-
-  return { data: result, isPending, isError, isSuccess, error };
+  return { data: cards, isPending, isError, isSuccess, error };
 }

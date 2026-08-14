@@ -1,7 +1,6 @@
 import styles from "./Header.module.css";
 import { Button } from "./Button.jsx";
 import { useCurrentStatus } from "../lib/current-status.js";
-import { DotsIndicator } from "./DotsIndicator.jsx";
 
 export function Header({ showContacts }) {
   const { data: current_status, isPending, isError } = useCurrentStatus();
