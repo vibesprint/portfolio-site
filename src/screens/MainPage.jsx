@@ -2,7 +2,7 @@ import styles from "./MainPage.module.css";
 import { Header } from "../components/Header";
 import { useHeroData } from "../lib/hero-section";
 import { WorksListsForId } from "../fragments/works-lists";
-import { getFAQData } from "../lib/faq";
+import { useFAQQuestions } from "../lib/faq";
 import { FAQQuestion } from "../components/FAQQuestion";
 import { DotsIndicator } from "../components/DotsIndicator.jsx";
 import { ErrorText, NeutralText } from "../components/TextMessageUtils.jsx";
@@ -106,10 +106,17 @@ function DistantWorks() {
 }
 
 function FAQSection() {
-  const { data } = getFAQData();
-  return (
-    <article className={styles["faq"]}>
-      <h1 className={styles["faq__heading"]}>FAQs</h1>
+  const { data, isPending, isError } = useFAQQuestions();
+  let body;
+
+  if (isPending) {
+    body = <DotsIndicator text="Loading" />;
+  } else if (isError) {
+    body = <ErrorText text="Error loading FAQ questions" />;
+  } else if (data == null || data.length === 0) {
+    body = <NeutralText text="No FAQ questions found!" />;
+  } else {
+    body = (
       <ul className={styles["faq__questions"]}>
         {data.map((faq, index) => {
           if (index === 0)
@@ -126,6 +133,13 @@ function FAQSection() {
             );
         })}
       </ul>
+    );
+  }
+
+  return (
+    <article className={styles["faq"]}>
+      <h1 className={styles["faq__heading"]}>FAQs</h1>
+      {body}
     </article>
   );
 }

@@ -12,6 +12,8 @@ export function ProjectCard({ title, desc, src_site, live_site, img_url }) {
             className={styles["cards__live-site-link"]}
             data-umami-event="live-visit"
             data-umami-event-target={live_site}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Visit Site
           </a>
@@ -20,6 +22,8 @@ export function ProjectCard({ title, desc, src_site, live_site, img_url }) {
             className={styles["cards__src-site-link"]}
             data-umami-event="src-visit"
             data-umami-event-target={src_site}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             View Source Code
           </a>

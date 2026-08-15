@@ -6,4 +6,5 @@ export const QUERY_KEYS = {
   current_status: ["current_status"],
   contacts: ["contacts"],
   experience: ["experience"],
+  faqs: ["faqs"],
 };

@@ -7,6 +7,8 @@ export function Footer() {
       <a
         href="https://github.com/vibesprint"
         className={styles["footer__github"]}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         github
       </a>

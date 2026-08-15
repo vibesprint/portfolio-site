@@ -17,13 +17,15 @@
 }
 
 .card__links {
-  @apply flex justify-between font-utils-preset-1;
+  @apply grid grid-cols-2 font-utils-preset-1;
 }
 
 .card__live-site-link {
+  @apply justify-self-start;
 }
 
 .card__src-site-link {
+  @apply justify-self-end;
 }
 
 .card__desc {
