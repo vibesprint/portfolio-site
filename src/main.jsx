@@ -7,14 +7,26 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { ROUTES } from "./routes.jsx";
 
 const USER_ID_KEY = "myuser-id";
-function identifyUser() {
+function getUserId() {
   let user_id = localStorage.getItem(USER_ID_KEY);
   if (user_id == null) {
     user_id = crypto.randomUUID();
     localStorage.setItem(USER_ID_KEY, user_id);
   }
+  return user_id;
+}
 
-  window.umami?.identify({ id: user_id });
+async function identifyUser() {
+  const user_id = getUserId();
+  await window.umami?.identify({ id: user_id });
+}
+
+async function blockAnalytics() {
+  const user_id = getUserId();
+  await fetch("/block-analytics", {
+    method: "POST",
+    body: JSON.stringify({ id: user_id }),
+  });
 }
 
 const umami_website_id = import.meta.env.VITE_UMAMI_WEBSITE_ID;
@@ -24,6 +36,7 @@ if (umami_website_id != null) {
   script.setAttribute("data-website-id", umami_website_id);
   script.defer = true;
   script.onload = identifyUser;
+  script.onerror = blockAnalytics;
   document.head.appendChild(script);
 }
 
