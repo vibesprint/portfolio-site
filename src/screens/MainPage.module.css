@@ -52,7 +52,3 @@
 .faq__questions {
   @apply flex flex-col gap-[48px];
 }
-
-.contact-card {
-  @apply flex flex-col gap-[16px] font-body-primary text-grey-700 tracking-wider;
-}

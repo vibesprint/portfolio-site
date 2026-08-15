@@ -45,3 +45,8 @@
     opacity: 0%;
   }
 }
+
+.contact-card {
+  @apply flex flex-col gap-[16px] font-body-primary text-grey-700 tracking-wider max-sm:font-body-secondary;
+  @apply list-disc list-inside;
+}

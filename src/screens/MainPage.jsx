@@ -4,25 +4,14 @@ import { useHeroData } from "../lib/hero-section";
 import { WorksListsForId } from "../fragments/works-lists";
 import { getFAQData } from "../lib/faq";
 import { FAQQuestion } from "../components/FAQQuestion";
-import { CardDialog } from "../components/CardDialog.jsx";
-import { useContactsList } from "../lib/contacts.js";
-import { useRef, forwardRef } from "react";
 import { DotsIndicator } from "../components/DotsIndicator.jsx";
 import { ErrorText, NeutralText } from "../components/TextMessageUtils.jsx";
 import { Footer } from "../components/Footer.jsx";
 
 export default function MainPage() {
-  const contactsDialog = useRef(null);
-
-  const showContacts = () => {
-    console.log("time to show contacts");
-    contactsDialog.current?.showModal();
-  };
-
   return (
     <div className={styles.container}>
-      <ContactsDialog ref={contactsDialog} />
-      <Header showContacts={showContacts} />
+      <Header />
       <main className={styles["container__main"]}>
         <HeroSection />
         <RecentWorks />
@@ -140,26 +129,3 @@ function FAQSection() {
     </article>
   );
 }
-
-const ContactsDialog = forwardRef((_props, ref) => {
-  const { data, isPending, isError } = useContactsList();
-
-  let content;
-  if (isPending) {
-    content = <DotsIndicator text="Loading contacts" />;
-  } else if (isError) {
-    content = <ErrorText text="Error: unable to load any contacts entries" />;
-  } else if ((data?.length ?? 0) === 0) {
-    content = <NeutralText text="No contacts entries found" />;
-  } else {
-    content = (
-      <ul className={styles["contact-card"]}>
-        {data.map((contact) => {
-          return <li key={contact}>{contact}</li>;
-        })}
-      </ul>
-    );
-  }
-
-  return <CardDialog ref={ref} content={content} title="Contacts" />;
-});

@@ -6,6 +6,12 @@
   font-size: 60px;
 }
 
+@utility font-heading-primary-2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
 @utility font-heading-secondary {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 500;
@@ -32,6 +38,14 @@
   @apply tracking-wide;
 }
 
+@utility font-body-secondary {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+
+  @apply tracking-wide;
+}
+
 @utility font-utils-preset-1 {
   font-family: "DM Sans", sans-serif;
   font-weight: 600;
@@ -47,6 +61,12 @@
 @utility font-utils-preset-3 {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
+  font-size: 14px;
+}
+
+@utility font-utils-preset-4 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
   font-size: 14px;
 }
 

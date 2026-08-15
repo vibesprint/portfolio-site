@@ -5,7 +5,7 @@
 }
 
 .dialog__container {
-  @apply flex flex-col bg-white gap-[12px] p-[32px] min-w-[min(100%,300px)] w-[512px];
+  @apply flex flex-col bg-white gap-[12px] p-[32px] w-[min(100%,512px)] max-sm:p-[24px];
 }
 
 .dialog__header {
@@ -13,9 +13,9 @@
 }
 
 .dialog__title {
-  @apply font-heading-primary text-teal-700;
+  @apply font-heading-primary text-teal-700 max-sm:font-heading-primary-2;
 }
 
 .dialog__close-btn {
-  @apply hover:cursor-pointer font-utils-preset-1 text-grey-800;
+  @apply hover:cursor-pointer font-utils-preset-1 text-grey-800 max-sm:font-utils-preset-4;
 }

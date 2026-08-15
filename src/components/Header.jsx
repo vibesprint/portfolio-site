@@ -1,9 +1,11 @@
 import styles from "./Header.module.css";
 import { Button } from "./Button.jsx";
 import { useCurrentStatus } from "../lib/current-status.js";
+import { useRef } from "react";
 
-export function Header({ showContacts }) {
+export function Header() {
   const { data: current_status, isPending, isError } = useCurrentStatus();
+  const contact_dialog = useRef(null);
   let indicator_bg = null;
   if (current_status) {
     indicator_bg =
@@ -12,6 +14,10 @@ export function Header({ showContacts }) {
         : current_status === "in-talks"
           ? "var(--color-gold-200)"
           : null;
+  }
+
+  function showContacts() {
+    contact_dialog.current?.showModal();
   }
 
   return (
@@ -53,6 +59,51 @@ export function Header({ showContacts }) {
           </p>
         </div>
       </div>
+      <ContactsDialog ref={contact_dialog} />
     </header>
   );
 }
+
+import { forwardRef } from "react";
+import { useContactsList } from "../lib/contacts.js";
+import { DotsIndicator } from "./DotsIndicator.jsx";
+import { NeutralText, ErrorText } from "./TextMessageUtils.jsx";
+import { CardDialog } from "./CardDialog.jsx";
+
+const ContactsDialog = forwardRef((_props, ref) => {
+  const { data, isPending, isError } = useContactsList();
+
+  let content;
+  if (isPending) {
+    content = (
+      <DotsIndicator
+        text="Loading contacts"
+        additionalTextStyle={["max-sm:font-body-secondary"]}
+      />
+    );
+  } else if (isError) {
+    content = (
+      <ErrorText
+        text="Error: unable to load any contacts entries"
+        additionalTextStyle={["max-sm:font-body-secondary"]}
+      />
+    );
+  } else if ((data?.length ?? 0) === 0) {
+    content = (
+      <NeutralText
+        text="No contacts entries found"
+        additionalTextStyle={["max-sm:font-body-secondary"]}
+      />
+    );
+  } else {
+    content = (
+      <ul className={styles["contact-card"]}>
+        {data.map((contact) => {
+          return <li key={contact}>{contact}</li>;
+        })}
+      </ul>
+    );
+  }
+
+  return <CardDialog ref={ref} content={content} title="Contacts" />;
+});
