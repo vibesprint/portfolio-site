@@ -20,6 +20,14 @@ export const ROUTES = [
           return { Component };
         },
       },
+
+      {
+        path: "*",
+        lazy: async () => {
+          const { NotFoundPage } = await import("./screens/NotFoundPage.jsx");
+          return { Component: NotFoundPage };
+        },
+      },
     ],
   },
 ];
