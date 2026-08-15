@@ -75,7 +75,14 @@ function WorksListsForIdLevel2({ proj_data }) {
       <div className="flex flex-col gap-[64px]">
         {projlist}
         <div className="self-center">
-          <Button action={loadMoreHandler}>Load more</Button>
+          <Button
+            action={loadMoreHandler}
+            data-umami-event="load-more"
+            data-umami-event-count={count + COUNT_INC_SIZE}
+            data-umami-event-projlist={proj_data?.title}
+          >
+            Load more
+          </Button>
         </div>
       </div>
     );

@@ -7,10 +7,20 @@ export function ProjectCard({ title, desc, src_site, live_site, img_url }) {
       <div className={styles["card__texts"]}>
         <h2 className={styles["card__heading"]}>{title}</h2>
         <div className={styles["card__links"]}>
-          <a href={live_site} className={styles["cards__live-site-link"]}>
+          <a
+            href={live_site}
+            className={styles["cards__live-site-link"]}
+            data-umami-event="live-visit"
+            data-umami-event-target={live_site}
+          >
             Visit Site
           </a>
-          <a href={src_site} className={styles["cards__src-site-link"]}>
+          <a
+            href={src_site}
+            className={styles["cards__src-site-link"]}
+            data-umami-event="src-visit"
+            data-umami-event-target={src_site}
+          >
             View Source Code
           </a>
         </div>

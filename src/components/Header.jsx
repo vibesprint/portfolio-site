@@ -29,7 +29,9 @@ export function Header() {
         <a href="/exp" className={styles["right-section__experience"]}>
           <p>experience</p>
         </a>
-        <Button action={showContacts}>contact</Button>
+        <Button action={showContacts} data-umami-event="show-contacts">
+          contact
+        </Button>
         <div
           className={styles["right-section__indicator"]}
           style={indicator_bg ? { backgroundColor: indicator_bg } : undefined}
