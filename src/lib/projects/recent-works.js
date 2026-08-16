@@ -5,7 +5,7 @@ import { client as sanity } from "../sanity/client";
 export function useWorksListsForId(workslists_id) {
   const fetcher = () =>
     sanity.fetch(
-      '*[_type == "meta-works-lists" && name == $worksName]{ project_lists[]->{_id, title, desc } }[0]',
+      '*[_type == "meta-works-lists" && name == $worksName]{ project_lists[]->{_id, title, desc, badge } }[0]',
       { worksName: workslists_id },
     );
 

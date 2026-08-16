@@ -5,7 +5,7 @@
 }
 
 .faq__question {
-  @apply font-heading-quaternary text-grey-950 max-w-[35em];
+  @apply font-heading-quaternary text-grey-950 max-w-[35em] hover:cursor-pointer tracking-wide;
 }
 
 .faq__answer {
