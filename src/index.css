@@ -4,30 +4,35 @@
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   font-size: 60px;
+  line-height: 1.2;
 }
 
 @utility font-heading-primary-2 {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   font-size: 48px;
+  line-height: 1.2;
 }
 
 @utility font-heading-secondary {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 500;
   font-size: 48px;
+  line-height: 1.2;
 }
 
 @utility font-heading-tertiary {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 400;
   font-size: 36px;
+  line-height: 1.2;
 }
 
 @utility font-heading-quaternary {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   font-size: 24px;
+  line-height: 1.2;
 }
 
 @utility font-body-primary {

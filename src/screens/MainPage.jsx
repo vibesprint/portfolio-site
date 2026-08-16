@@ -40,7 +40,10 @@ function HeroSection() {
   return (
     <article className={styles["hero-section"]}>
       <div className={styles["hero-section__texts"]}>
-        <h1 className={styles["hero-section__title"]}>{title}</h1>
+        <div className="flex flex-col gap-[4px]">
+          <p className="font-body-secondary leading-none">Hi, I'm</p>
+          <h1 className={styles["hero-section__title"]}>{title}</h1>
+        </div>
         <p className={styles["hero-section__body"]}>{body}</p>
       </div>
       <a href="/exp" className={styles["hero-section__experience"]}>

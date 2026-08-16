@@ -18,7 +18,7 @@
 }
 
 .projlist__desc {
-  @apply font-body-primary text-grey-950 max-w-[32em];
+  @apply font-body-primary text-grey-950 max-w-[35em];
 }
 
 .projlist__badge {

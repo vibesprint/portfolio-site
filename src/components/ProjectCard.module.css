@@ -5,7 +5,7 @@
 }
 
 .card__image {
-  @apply max-w-[512px] w-full h-[288px] min-w-0 object-contain object-center;
+  @apply max-w-[512px] w-full h-[288px] min-w-0 object-contain object-center border border-orange-500 rounded-md;
 }
 
 .card__texts {

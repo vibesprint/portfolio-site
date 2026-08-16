@@ -3,7 +3,7 @@ export function useHeroData() {
     data: {
       data: {
         title: "Mohammad Raza",
-        body: "Something something something lorem ipsum".repeat(3),
+        body: "I am a Mechanical Engineer",
       },
     },
     isError: false,
